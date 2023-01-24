@@ -28,16 +28,24 @@ export const getRouteData = createAsyncThunk(
 
 const initialState: IAppState = {
   isLoading: false,
-  error: '',
+  error: null,
   routes: [],
-  activeRoute: undefined,
+  activeRoute: null,
   activeRouteData: [],
 };
 
 export const appSlice = createSlice({
   name: 'app',
   initialState,
-  reducers: {},
+  reducers: {
+    setSelectedRoute: (state, action) => {
+      state.activeRoute = action.payload;
+    },
+    clearSelectedRoute: (state) => {
+      state.activeRoute = null;
+      state.activeRouteData = [];
+    },
+  },
   extraReducers: (builder) => {
     builder.addCase(getRoutes.pending, (state: IAppState) => {
       state.isLoading = true;
@@ -48,7 +56,7 @@ export const appSlice = createSlice({
     });
     builder.addCase(getRoutes.rejected, (state: IAppState, action) => {
       state.isLoading = false;
-      state.error = action.error.message;
+      state.error = action.error;
     });
 
     builder.addCase(getRouteData.pending, (state: IAppState) => {
@@ -60,11 +68,12 @@ export const appSlice = createSlice({
     });
     builder.addCase(getRouteData.rejected, (state: IAppState, action) => {
       state.isLoading = false;
-      state.error = action.error.message;
+      state.activeRouteData = [];
+      state.error = action.error;
     });
   },
 });
 
-export const {} = appSlice.actions;
+export const { setSelectedRoute, clearSelectedRoute } = appSlice.actions;
 
 export default appSlice.reducer;
