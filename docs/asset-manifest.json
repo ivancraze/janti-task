@@ -1,0 +1,13 @@
+{
+  "files": {
+    "main.css": "/janti-task/static/css/main.cb95b67a.css",
+    "main.js": "/janti-task/static/js/main.67a06c2e.js",
+    "index.html": "/janti-task/index.html",
+    "main.cb95b67a.css.map": "/janti-task/static/css/main.cb95b67a.css.map",
+    "main.67a06c2e.js.map": "/janti-task/static/js/main.67a06c2e.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.cb95b67a.css",
+    "static/js/main.67a06c2e.js"
+  ]
+}
